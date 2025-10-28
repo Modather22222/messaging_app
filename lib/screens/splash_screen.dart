@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:messaging_app/screens/name_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -36,7 +37,10 @@ class SplashScreen extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
-                  // TODO: Handle 'Get started' button press
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const NameScreen()),
+                  );
                 },
                 child: const Text(
                   'Get started',
