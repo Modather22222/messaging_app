@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:messaging_app/screens/verification_screen.dart';
+import 'package:messaging_app/utils/app_routes.dart';
 
 class PhoneScreen extends StatelessWidget {
   const PhoneScreen({super.key});
@@ -73,12 +73,7 @@ class PhoneScreen extends StatelessWidget {
                     alignment: Alignment.bottomRight,
                     child: FloatingActionButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const VerificationScreen(),
-                          ),
-                        );
+                        Navigator.pushNamed(context, AppRoutes.verification);
                       },
                       backgroundColor: Colors.white,
                       child: const Icon(

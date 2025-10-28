@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:messaging_app/screens/add_contacts_screen.dart';
+import 'package:messaging_app/utils/app_routes.dart';
 import 'package:pinput/pinput.dart';
 
 class VerificationScreen extends StatelessWidget {
@@ -56,7 +56,7 @@ class VerificationScreen extends StatelessWidget {
                   Pinput(
                     defaultPinTheme: defaultPinTheme,
                     length: 6,
-                    onCompleted: (pin) => print(pin),
+                    onCompleted: (pin) {},
                   ),
                   const SizedBox(height: 20),
                   TextButton(
@@ -73,12 +73,7 @@ class VerificationScreen extends StatelessWidget {
                     alignment: Alignment.bottomRight,
                     child: FloatingActionButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => AddContactsScreen(),
-                          ),
-                        );
+                        Navigator.pushNamed(context, AppRoutes.addContacts);
                       },
                       backgroundColor: Colors.white,
                       child: const Icon(

@@ -1,13 +1,5 @@
 import 'package:flutter/material.dart';
-
-// Simple model for a contact
-class Contact {
-  final String name;
-  final String imageUrl;
-  final bool isUser; // To differentiate between "Add" and "Invite"
-
-  Contact({required this.name, required this.imageUrl, this.isUser = false});
-}
+import 'package:messaging_app/models/contact_model.dart';
 
 class AddContactsScreen extends StatelessWidget {
   AddContactsScreen({super.key});

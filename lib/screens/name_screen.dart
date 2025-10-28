@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:messaging_app/screens/phone_screen.dart';
+import 'package:messaging_app/utils/app_routes.dart';
 
 class NameScreen extends StatelessWidget {
   const NameScreen({super.key});
@@ -55,12 +55,7 @@ class NameScreen extends StatelessWidget {
                     alignment: Alignment.bottomRight,
                     child: FloatingActionButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const PhoneScreen(),
-                          ),
-                        );
+                        Navigator.pushNamed(context, AppRoutes.phone);
                       },
                       backgroundColor: Colors.white,
                       child: const Icon(

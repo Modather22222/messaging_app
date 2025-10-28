@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:messaging_app/screens/name_screen.dart';
+import 'package:messaging_app/utils/app_routes.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -39,12 +39,7 @@ class SplashScreen extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const NameScreen(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, AppRoutes.name);
                   },
                   child: const Text(
                     'Get started',
