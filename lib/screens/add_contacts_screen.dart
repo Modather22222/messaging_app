@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:messaging_app/models/contact_model.dart';
+import 'package:messaging_app/utils/app_routes.dart';
 
 class AddContactsScreen extends StatelessWidget {
   AddContactsScreen({super.key});
@@ -92,7 +93,7 @@ class AddContactsScreen extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      // TODO: Handle Continue
+                      Navigator.pushNamed(context, AppRoutes.messages);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
