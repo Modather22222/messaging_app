@@ -199,10 +199,11 @@ class _MessagesScreenState extends State<MessagesScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        elevation: 8.0, // Added elevation to the FloatingActionButton
+        elevation: 8.0,
         onPressed: () {
-          // TODO: Handle new message
+          Navigator.pushNamed(context, AppRoutes.newChat);
         },
+        backgroundColor: const Color(0xFF4A3F69),
         child: const Icon(Icons.edit, color: Colors.white),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
