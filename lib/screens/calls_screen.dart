@@ -179,7 +179,7 @@ class CallsScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         elevation: 8.0,
         onPressed: () {
-          // TODO: Handle new call
+          Navigator.pushNamed(context, AppRoutes.newCall);
         },
         backgroundColor: const Color(0xFF4A3F69),
         child: const Icon(

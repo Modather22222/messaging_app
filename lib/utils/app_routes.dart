@@ -8,6 +8,7 @@ import 'package:messaging_app/screens/messages_screen.dart';
 import 'package:messaging_app/screens/calls_screen.dart';
 import 'package:messaging_app/screens/chat_screen.dart';
 import 'package:messaging_app/screens/new_chat_screen.dart';
+import 'package:messaging_app/screens/new_call_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -19,6 +20,7 @@ class AppRoutes {
   static const String calls = '/calls';
   static const String chat = '/chat';
   static const String newChat = '/new-chat';
+  static const String newCall = '/new-call';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -40,6 +42,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_) => ChatScreen());
       case newChat:
         return MaterialPageRoute(builder: (_) => NewChatScreen());
+      case newCall:
+        return MaterialPageRoute(builder: (_) => NewCallScreen());
       default:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
     }
