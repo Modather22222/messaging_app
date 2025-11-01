@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:messaging_app/models/contact_model.dart';
 import 'package:messaging_app/utils/app_constants.dart';
+import 'package:messaging_app/widgets/contact_list_item.dart';
 
 class NewCallScreen extends StatelessWidget {
   NewCallScreen({super.key});
@@ -77,23 +78,11 @@ class NewCallScreen extends StatelessWidget {
                   itemCount: contacts.length,
                   itemBuilder: (context, contactIndex) {
                     final contact = contacts[contactIndex];
-                    return ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: AppConstants.blueGrey,
-                        child: Text(
-                          contact.name[0],
-                          style: const TextStyle(color: AppConstants.white),
-                        ),
-                      ),
-                      title: Text(
-                        contact.name,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: const Text(
-                        '+91 999 2222 433',
-                        style: TextStyle(color: AppConstants.grey),
-                      ), // Placeholder phone number
-                      trailing: Row(
+                    return ContactListItem(
+                      name: contact.name,
+                      imageUrl: contact.imageUrl,
+                      subtitle: '+91 999 2222 433', // Placeholder phone number
+                      trailingWidget: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           IconButton(

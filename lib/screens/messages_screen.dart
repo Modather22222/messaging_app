@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:messaging_app/utils/app_routes.dart';
 import 'package:messaging_app/utils/app_constants.dart';
+import 'package:messaging_app/widgets/message_thread_item.dart';
 
 class MessageThread {
   final String name;
@@ -91,69 +92,12 @@ class _MessagesScreenState extends State<MessagesScreen> {
                 itemCount: messageThreads.length,
                 itemBuilder: (context, index) {
                   final thread = messageThreads[index];
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: AppConstants.paddingSmall,
-                    ), // Add vertical padding between list items
-                    child: Builder(
-                      builder: (BuildContext innerContext) {
-                        return ListTile(
-                          leading: CircleAvatar(
-                            backgroundColor: AppConstants.grey300,
-                            child: Text(thread.name[0]),
-                          ),
-                          title: Text(
-                            thread.name,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          subtitle: Text(
-                            thread.message,
-                            style: const TextStyle(color: AppConstants.grey),
-                          ),
-                          trailing: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                thread.time,
-                                style: const TextStyle(
-                                  fontSize: 12,
-                                  color: AppConstants.grey,
-                                ),
-                              ),
-                              if (thread.hasUnread)
-                                const SizedBox(
-                                  height: AppConstants.spacingSmall,
-                                ), // Spacing between time and badge
-                              if (thread.hasUnread)
-                                Container(
-                                  padding: const EdgeInsets.all(
-                                    AppConstants.paddingSmall,
-                                  ),
-                                  decoration: BoxDecoration(
-                                    color: AppConstants.red,
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  constraints: const BoxConstraints(
-                                    minWidth: 18,
-                                    minHeight: 18,
-                                  ),
-                                  child: const Text(
-                                    '1',
-                                    style: TextStyle(
-                                      color: AppConstants.white,
-                                      fontSize: 10,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                            ],
-                          ),
-                          onTap: () {
-                            Navigator.pushNamed(innerContext, AppRoutes.chat);
-                          },
-                        );
-                      },
-                    ),
+                  return MessageThreadItem(
+                    name: thread.name,
+                    message: thread.message,
+                    time: thread.time,
+                    imageUrl: thread.imageUrl,
+                    hasUnread: thread.hasUnread,
                   );
                 },
               ),

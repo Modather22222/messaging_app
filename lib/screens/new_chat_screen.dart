@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:messaging_app/models/contact_model.dart';
 import 'package:messaging_app/utils/app_routes.dart';
 import 'package:messaging_app/utils/app_constants.dart';
+import 'package:messaging_app/widgets/contact_list_item.dart';
+import 'package:messaging_app/widgets/search_bar_widget.dart';
 
 class NewChatScreen extends StatelessWidget {
   NewChatScreen({super.key});
@@ -72,28 +74,24 @@ class NewChatScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+                // Add a search bar here
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppConstants.paddingMedium,
+                    vertical: AppConstants.paddingSmall,
+                  ),
+                  child: const SearchBarWidget(hintText: AppConstants.search),
+                ),
                 ListView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: contacts.length,
                   itemBuilder: (context, contactIndex) {
                     final contact = contacts[contactIndex];
-                    return ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: AppConstants.blueGrey,
-                        child: Text(
-                          contact.name[0],
-                          style: const TextStyle(color: AppConstants.white),
-                        ),
-                      ),
-                      title: Text(
-                        contact.name,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      subtitle: const Text(
-                        '+1 123 456 7890',
-                        style: TextStyle(color: AppConstants.grey),
-                      ), // Placeholder phone number
+                    return ContactListItem(
+                      name: contact.name,
+                      imageUrl: contact.imageUrl,
+                      subtitle: '+1 123 456 7890',
                       onTap: () {
                         // Navigate to chat screen with the selected contact
                         Navigator.pushNamed(context, AppRoutes.chat);

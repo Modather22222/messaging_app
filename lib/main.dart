@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:messaging_app/utils/app_routes.dart';
 
-void main() {
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+// ...existing code...
+void main() async {
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 

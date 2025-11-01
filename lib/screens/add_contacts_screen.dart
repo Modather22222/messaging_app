@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:messaging_app/models/contact_model.dart';
 import 'package:messaging_app/utils/app_routes.dart';
 import 'package:messaging_app/utils/app_constants.dart';
+import 'package:messaging_app/widgets/contact_list_item.dart';
+import 'package:messaging_app/widgets/search_bar_widget.dart';
 
 class AddContactsScreen extends StatelessWidget {
   AddContactsScreen({super.key});
@@ -47,37 +49,17 @@ class AddContactsScreen extends StatelessWidget {
                 style: TextStyle(color: AppConstants.white70, fontSize: 16),
               ),
               const SizedBox(height: AppConstants.spacingLarge),
-              const TextField(
-                decoration: InputDecoration(
-                  hintText: AppConstants.search,
-                  hintStyle: TextStyle(color: AppConstants.white54),
-                  prefixIcon: Icon(Icons.search, color: AppConstants.white54),
-                  filled: true,
-                  fillColor: Color.fromRGBO(255, 255, 255, 0.1),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(12.0)),
-                    borderSide: BorderSide.none,
-                  ),
-                ),
-              ),
+              const SearchBarWidget(hintText: AppConstants.search),
               const SizedBox(height: AppConstants.spacingLarge),
               Expanded(
                 child: ListView.builder(
                   itemCount: contacts.length,
                   itemBuilder: (context, index) {
                     final contact = contacts[index];
-                    return ListTile(
-                      contentPadding: EdgeInsets.zero, // Adjust padding
-                      leading: CircleAvatar(
-                        // You can add placeholder images later
-                        backgroundColor: AppConstants.white24,
-                        child: Text(contact.name[0]),
-                      ),
-                      title: Text(
-                        contact.name,
-                        style: const TextStyle(color: AppConstants.white),
-                      ),
-                      trailing: ElevatedButton(
+                    return ContactListItem(
+                      name: contact.name,
+                      imageUrl: contact.imageUrl,
+                      trailingWidget: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           backgroundColor: contact.isUser
@@ -93,6 +75,9 @@ class AddContactsScreen extends StatelessWidget {
                               : AppConstants.invite,
                         ),
                       ),
+                      onTap: () {
+                        // TODO: Handle contact tap
+                      },
                     );
                   },
                 ),

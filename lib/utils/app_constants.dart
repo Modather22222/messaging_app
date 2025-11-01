@@ -53,4 +53,6 @@ class AppConstants {
   static const double spacingMedium = 10.0;
   static const double spacingLarge = 20.0;
   static const double spacingExtraLarge = 40.0;
+  static const double listTileTrailingWidth = 60.0;
+  static const double listTileTrailingHeight = 48.0;
 }
