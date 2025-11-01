@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:messaging_app/utils/app_constants.dart';
 
 class Message {
   final String text;
@@ -31,18 +32,18 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppConstants.white,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF4A3F69),
+        backgroundColor: AppConstants.primaryPurple,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: AppConstants.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text(
           'Cameron',
           style: TextStyle(
-            color: Colors.white,
+            color: AppConstants.white,
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
@@ -55,7 +56,7 @@ class ChatScreen extends StatelessWidget {
           children: [
             Expanded(
               child: ListView.builder(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(AppConstants.paddingMedium),
                 itemCount: messages.length,
                 itemBuilder: (context, index) {
                   final message = messages[index];
@@ -64,18 +65,24 @@ class ChatScreen extends StatelessWidget {
                         ? Alignment.centerRight
                         : Alignment.centerLeft,
                     child: Container(
-                      margin: const EdgeInsets.symmetric(vertical: 4.0),
-                      padding: const EdgeInsets.all(12.0),
+                      margin: const EdgeInsets.symmetric(
+                        vertical: AppConstants.spacingSmall,
+                      ),
+                      padding: const EdgeInsets.all(AppConstants.paddingMedium),
                       decoration: BoxDecoration(
                         color: message.isMe
-                            ? const Color(0xFF4A3F69)
-                            : Colors.grey[300],
-                        borderRadius: BorderRadius.circular(16.0),
+                            ? AppConstants.primaryPurple
+                            : AppConstants.grey300,
+                        borderRadius: BorderRadius.circular(
+                          AppConstants.paddingMedium,
+                        ),
                       ),
                       child: Text(
                         message.text,
                         style: TextStyle(
-                          color: message.isMe ? Colors.white : Colors.black,
+                          color: message.isMe
+                              ? AppConstants.white
+                              : AppConstants.black,
                         ),
                       ),
                     ),
@@ -84,33 +91,35 @@ class ChatScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(AppConstants.paddingMedium),
               child: Row(
                 children: [
                   Expanded(
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Type a message',
-                        hintStyle: const TextStyle(color: Colors.grey),
+                        hintText: AppConstants.typeMessage,
+                        hintStyle: const TextStyle(color: AppConstants.grey),
                         filled: true,
-                        fillColor: Colors.grey[200],
+                        fillColor: AppConstants.grey200,
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(24.0),
+                          borderRadius: BorderRadius.circular(
+                            AppConstants.paddingLarge,
+                          ),
                           borderSide: BorderSide.none,
                         ),
                         contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 20.0,
-                          vertical: 10.0,
+                          horizontal: AppConstants.spacingLarge,
+                          vertical: AppConstants.spacingMedium,
                         ),
                       ),
                     ),
                   ),
-                  const SizedBox(width: 8.0),
+                  const SizedBox(width: AppConstants.spacingSmall),
                   CircleAvatar(
-                    backgroundColor: const Color(0xFF4A3F69),
+                    backgroundColor: AppConstants.primaryPurple,
                     radius: 24,
                     child: IconButton(
-                      icon: const Icon(Icons.mic, color: Colors.white),
+                      icon: const Icon(Icons.mic, color: AppConstants.white),
                       onPressed: () {
                         // TODO: Handle voice message
                       },

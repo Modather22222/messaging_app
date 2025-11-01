@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:messaging_app/models/contact_model.dart';
 import 'package:messaging_app/utils/app_routes.dart';
+import 'package:messaging_app/utils/app_constants.dart';
 
 class NewChatScreen extends StatelessWidget {
   NewChatScreen({super.key});
@@ -25,18 +26,21 @@ class NewChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppConstants.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: AppConstants.white,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.close, color: Colors.black), // Close button
+          icon: const Icon(
+            Icons.close,
+            color: AppConstants.black,
+          ), // Close button
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text(
-          'New Chat',
+          AppConstants.newChat,
           style: TextStyle(
-            color: Colors.black,
+            color: AppConstants.black,
             fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
@@ -56,13 +60,13 @@ class NewChatScreen extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: 16.0,
-                    vertical: 8.0,
+                    horizontal: AppConstants.paddingMedium,
+                    vertical: AppConstants.paddingSmall,
                   ),
                   child: Text(
                     category,
                     style: const TextStyle(
-                      color: Colors.grey,
+                      color: AppConstants.grey,
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -76,10 +80,10 @@ class NewChatScreen extends StatelessWidget {
                     final contact = contacts[contactIndex];
                     return ListTile(
                       leading: CircleAvatar(
-                        backgroundColor: Colors.blueGrey,
+                        backgroundColor: AppConstants.blueGrey,
                         child: Text(
                           contact.name[0],
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(color: AppConstants.white),
                         ),
                       ),
                       title: Text(
@@ -88,7 +92,7 @@ class NewChatScreen extends StatelessWidget {
                       ),
                       subtitle: const Text(
                         '+1 123 456 7890',
-                        style: TextStyle(color: Colors.grey),
+                        style: TextStyle(color: AppConstants.grey),
                       ), // Placeholder phone number
                       onTap: () {
                         // Navigate to chat screen with the selected contact

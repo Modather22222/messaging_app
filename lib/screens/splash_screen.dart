@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:messaging_app/utils/app_routes.dart';
+import 'package:messaging_app/utils/app_constants.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -7,29 +8,35 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF4A3F69),
+      backgroundColor: AppConstants.primaryPurple,
       body: SafeArea(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppConstants.paddingLarge,
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const Icon(Icons.chat_bubble, size: 100, color: Colors.white),
-                const SizedBox(height: 20),
+                const Icon(
+                  Icons.chat_bubble,
+                  size: 100,
+                  color: AppConstants.white,
+                ),
+                const SizedBox(height: AppConstants.spacingLarge),
                 const Text(
-                  'Simpliest Video Call and Messaging App',
+                  AppConstants.splashTitle,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: AppConstants.white,
                     fontSize: 24,
                     fontFamily: 'Sans-serif',
                   ),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: AppConstants.spacingExtraLarge),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor: AppConstants.white,
                     padding: const EdgeInsets.symmetric(
                       horizontal: 40,
                       vertical: 15,
@@ -42,18 +49,18 @@ class SplashScreen extends StatelessWidget {
                     Navigator.pushNamed(context, AppRoutes.name);
                   },
                   child: const Text(
-                    'Get started',
-                    style: TextStyle(color: Colors.black87, fontSize: 18),
+                    AppConstants.getStarted,
+                    style: TextStyle(color: AppConstants.black, fontSize: 18),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: AppConstants.spacingLarge),
                 TextButton(
                   onPressed: () {
                     // TODO: Handle 'Sign in' button press
                   },
                   child: const Text(
-                    'Already a member? Sign in',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                    AppConstants.alreadyMember,
+                    style: TextStyle(color: AppConstants.white, fontSize: 16),
                   ),
                 ),
               ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:messaging_app/utils/app_routes.dart';
 import 'package:pinput/pinput.dart';
+import 'package:messaging_app/utils/app_constants.dart';
 
 class VerificationScreen extends StatelessWidget {
   const VerificationScreen({super.key});
@@ -18,15 +19,15 @@ class VerificationScreen extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(color: const Color.fromRGBO(234, 239, 243, 1)),
         borderRadius: BorderRadius.circular(20),
-        color: Colors.white,
+        color: AppConstants.white,
       ),
     );
 
     return Scaffold(
-      backgroundColor: const Color(0xFF4A3F69),
+      backgroundColor: AppConstants.primaryPurple,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(AppConstants.paddingLarge),
           child: SingleChildScrollView(
             child: ConstrainedBox(
               constraints: BoxConstraints(
@@ -40,45 +41,47 @@ class VerificationScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   const Text(
-                    "What's the code?",
+                    AppConstants.whatsTheCode,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppConstants.white,
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: AppConstants.spacingMedium),
                   const Text(
-                    "Enter the code we've send to +91 708 5432 888",
-                    style: TextStyle(color: Colors.white70, fontSize: 16),
+                    AppConstants.enterCode,
+                    style: TextStyle(color: AppConstants.white70, fontSize: 16),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: AppConstants.spacingExtraLarge),
                   Pinput(
                     defaultPinTheme: defaultPinTheme,
                     length: 6,
                     onCompleted: (pin) {},
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: AppConstants.spacingLarge),
                   TextButton(
                     onPressed: () {
                       // TODO: Handle resend code
                     },
                     child: const Text(
-                      "Didn't recieve code? Send again",
-                      style: TextStyle(color: Colors.white),
+                      AppConstants.didntReceiveCode,
+                      style: TextStyle(color: AppConstants.white),
                     ),
                   ),
-                  const SizedBox(height: 40), // Added space before the button
+                  const SizedBox(
+                    height: AppConstants.spacingExtraLarge,
+                  ), // Added space before the button
                   Align(
                     alignment: Alignment.bottomRight,
                     child: FloatingActionButton(
                       onPressed: () {
                         Navigator.pushNamed(context, AppRoutes.addContacts);
                       },
-                      backgroundColor: Colors.white,
+                      backgroundColor: AppConstants.white,
                       child: const Icon(
                         Icons.arrow_forward,
-                        color: Color(0xFF4A3F69),
+                        color: AppConstants.primaryPurple,
                       ),
                     ),
                   ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:messaging_app/utils/app_routes.dart';
+import 'package:messaging_app/utils/app_constants.dart';
 
 class NameScreen extends StatelessWidget {
   const NameScreen({super.key});
@@ -7,10 +8,10 @@ class NameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF4A3F69),
+      backgroundColor: AppConstants.primaryPurple,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(AppConstants.paddingLarge),
           child: SingleChildScrollView(
             child: ConstrainedBox(
               constraints: BoxConstraints(
@@ -24,43 +25,45 @@ class NameScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   const Text(
-                    "What's your name?",
+                    AppConstants.whatsYourName,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppConstants.white,
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: AppConstants.spacingMedium),
                   const Text(
-                    "We'll send you a code to verify your number.",
-                    style: TextStyle(color: Colors.white70, fontSize: 16),
+                    AppConstants.verifyNumber,
+                    style: TextStyle(color: AppConstants.white70, fontSize: 16),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: AppConstants.spacingExtraLarge),
                   const TextField(
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: AppConstants.white),
                     decoration: InputDecoration(
-                      labelText: 'John Doe',
-                      labelStyle: TextStyle(color: Colors.white54),
+                      labelText: AppConstants.johnDoe,
+                      labelStyle: TextStyle(color: AppConstants.white54),
                       enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white54),
+                        borderSide: BorderSide(color: AppConstants.white54),
                       ),
                       focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
+                        borderSide: BorderSide(color: AppConstants.white),
                       ),
                     ),
                   ),
-                  const SizedBox(height: 40), // Added space before the button
+                  const SizedBox(
+                    height: AppConstants.spacingExtraLarge,
+                  ), // Added space before the button
                   Align(
                     alignment: Alignment.bottomRight,
                     child: FloatingActionButton(
                       onPressed: () {
                         Navigator.pushNamed(context, AppRoutes.phone);
                       },
-                      backgroundColor: Colors.white,
+                      backgroundColor: AppConstants.white,
                       child: const Icon(
                         Icons.arrow_forward,
-                        color: Color(0xFF4A3F69),
+                        color: AppConstants.primaryPurple,
                       ),
                     ),
                   ),

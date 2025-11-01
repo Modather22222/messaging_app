@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:messaging_app/models/contact_model.dart';
 import 'package:messaging_app/utils/app_routes.dart';
+import 'package:messaging_app/utils/app_constants.dart';
 
 class AddContactsScreen extends StatelessWidget {
   AddContactsScreen({super.key});
@@ -17,35 +18,40 @@ class AddContactsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF4A3F69),
+      backgroundColor: AppConstants.primaryPurple,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: AppConstants.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text(
-          'Add Contacts',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          AppConstants.addContacts,
+          style: TextStyle(
+            color: AppConstants.white,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppConstants.paddingLarge,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Add people who are already using the app or invite people to join',
-                style: TextStyle(color: Colors.white70, fontSize: 16),
+                AppConstants.addOrInvitePeople,
+                style: TextStyle(color: AppConstants.white70, fontSize: 16),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: AppConstants.spacingLarge),
               const TextField(
                 decoration: InputDecoration(
-                  hintText: 'Search',
-                  hintStyle: TextStyle(color: Colors.white54),
-                  prefixIcon: Icon(Icons.search, color: Colors.white54),
+                  hintText: AppConstants.search,
+                  hintStyle: TextStyle(color: AppConstants.white54),
+                  prefixIcon: Icon(Icons.search, color: AppConstants.white54),
                   filled: true,
                   fillColor: Color.fromRGBO(255, 255, 255, 0.1),
                   border: OutlineInputBorder(
@@ -54,7 +60,7 @@ class AddContactsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: AppConstants.spacingLarge),
               Expanded(
                 child: ListView.builder(
                   itemCount: contacts.length,
@@ -64,31 +70,37 @@ class AddContactsScreen extends StatelessWidget {
                       contentPadding: EdgeInsets.zero, // Adjust padding
                       leading: CircleAvatar(
                         // You can add placeholder images later
-                        backgroundColor: Colors.white24,
+                        backgroundColor: AppConstants.white24,
                         child: Text(contact.name[0]),
                       ),
                       title: Text(
                         contact.name,
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: AppConstants.white),
                       ),
                       trailing: ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           backgroundColor: contact.isUser
-                              ? Colors.white10
-                              : Colors.white,
+                              ? AppConstants.white10
+                              : AppConstants.white,
                           foregroundColor: contact.isUser
-                              ? Colors.white
-                              : const Color(0xFF4A3F69),
+                              ? AppConstants.white
+                              : AppConstants.primaryPurple,
                         ),
-                        child: Text(contact.isUser ? 'Add' : 'Invite'),
+                        child: Text(
+                          contact.isUser
+                              ? AppConstants.add
+                              : AppConstants.invite,
+                        ),
                       ),
                     );
                   },
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
+                padding: const EdgeInsets.symmetric(
+                  vertical: AppConstants.spacingLarge,
+                ),
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
@@ -96,15 +108,15 @@ class AddContactsScreen extends StatelessWidget {
                       Navigator.pushNamed(context, AppRoutes.messages);
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
+                      backgroundColor: AppConstants.white,
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
                     child: const Text(
-                      'Continue',
-                      style: TextStyle(color: Colors.black87, fontSize: 18),
+                      AppConstants.cont,
+                      style: TextStyle(color: AppConstants.black, fontSize: 18),
                     ),
                   ),
                 ),

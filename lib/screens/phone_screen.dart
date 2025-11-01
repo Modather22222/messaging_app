@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:messaging_app/utils/app_routes.dart';
+import 'package:messaging_app/utils/app_constants.dart';
 
 class PhoneScreen extends StatelessWidget {
   const PhoneScreen({super.key});
@@ -8,10 +9,10 @@ class PhoneScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF4A3F69),
+      backgroundColor: AppConstants.primaryPurple,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(24.0),
+          padding: const EdgeInsets.all(AppConstants.paddingLarge),
           child: SingleChildScrollView(
             child: ConstrainedBox(
               constraints: BoxConstraints(
@@ -25,22 +26,24 @@ class PhoneScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   const Text(
-                    "What's your number?",
+                    AppConstants.whatsYourNumber,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: AppConstants.white,
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: AppConstants.spacingMedium),
                   const Text(
-                    "We'll send you a code to verify your number.",
-                    style: TextStyle(color: Colors.white70, fontSize: 16),
+                    AppConstants.verifyNumber,
+                    style: TextStyle(color: AppConstants.white70, fontSize: 16),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: AppConstants.spacingExtraLarge),
                   Container(
                     decoration: const BoxDecoration(
-                      border: Border(bottom: BorderSide(color: Colors.white54)),
+                      border: Border(
+                        bottom: BorderSide(color: AppConstants.white54),
+                      ),
                     ),
                     child: Row(
                       children: [
@@ -51,16 +54,18 @@ class PhoneScreen extends StatelessWidget {
                           showCountryOnly: false,
                           showOnlyCountryWhenClosed: false,
                           alignLeft: false,
-                          textStyle: const TextStyle(color: Colors.white),
-                          dialogTextStyle: const TextStyle(color: Colors.black),
+                          textStyle: const TextStyle(color: AppConstants.white),
+                          dialogTextStyle: const TextStyle(
+                            color: AppConstants.black,
+                          ),
                         ),
                         const Expanded(
                           child: TextField(
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: AppConstants.white),
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
                               hintText: '809 5555 321',
-                              hintStyle: TextStyle(color: Colors.white54),
+                              hintStyle: TextStyle(color: AppConstants.white54),
                               border: InputBorder.none,
                             ),
                           ),
@@ -68,17 +73,19 @@ class PhoneScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 40), // Added space before the button
+                  const SizedBox(
+                    height: AppConstants.spacingExtraLarge,
+                  ), // Added space before the button
                   Align(
                     alignment: Alignment.bottomRight,
                     child: FloatingActionButton(
                       onPressed: () {
                         Navigator.pushNamed(context, AppRoutes.verification);
                       },
-                      backgroundColor: Colors.white,
+                      backgroundColor: AppConstants.white,
                       child: const Icon(
                         Icons.arrow_forward,
-                        color: Color(0xFF4A3F69),
+                        color: AppConstants.primaryPurple,
                       ),
                     ),
                   ),
